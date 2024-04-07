@@ -14,19 +14,17 @@ The focus of the benchmarks is primarily on proof size.
 # SP1 proof size benchmark 
 
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
-|        |          |           |            |
-|        |          |           |            |
+| --- | --- | --- | --- |
+| x | x | x | x |
 
 # Risc0 proof size benchmark
 
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
-|        |          |           |            |
-|        |          |           |            |
+| --- | --- | --- | --- |
+| x | x | x | x |
 
 # Risc0-Groth16 proof size benchmark
 
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
-|        |          |           |            |
-|        |          |           |            |
-
-
+| --- | --- | --- | --- |
+| x | x | x | x |
