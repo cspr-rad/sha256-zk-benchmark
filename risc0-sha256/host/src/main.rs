@@ -7,6 +7,7 @@ use risc0_zkvm::{
     default_prover, get_prover_server, recursion::identity_p254, CompactReceipt, ExecutorEnv,
     ExecutorImpl, InnerReceipt, ProverOpts, Receipt, VerifierContext,
 };
+use serde::Serialize;
 
 fn main() {
     #[cfg(feature="groth16")]
@@ -21,6 +22,14 @@ fn default(){
         .with_env_filter(tracing_subscriber::filter::EnvFilter::from_default_env())
         .init();
     // use default prover to generate proof
+    let env = ExecutorEnv::builder()
+    .build()
+    .unwrap();
+
+    let prover = default_prover();
+    let receipt = prover.prove(env, RISC0SHA_ELF).unwrap();
+    println!("Proof size: {:?}", &bincode::serialize(&receipt).unwrap().len());
+    receipt.verify(RISC0SHA_ID).expect("Failed to verify proof!");
 }
 
 #[cfg(feature = "groth16")]
