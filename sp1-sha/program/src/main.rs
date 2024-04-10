@@ -8,10 +8,11 @@ use sp1_types::Output;
 
 pub fn main() {
     let mut output_hashes: Vec<Vec<u8>> = Vec::new();
-    for i in 0..1000 {
+    let rounds = sp1_zkvm::io::read::<u32>();
+    for i in 0..rounds {
         let sha_input = [1u8; 32];
         output_hashes.push(Sha256::digest(&sha_input).to_vec());
-    }
+    };
     let output: Output = Output {
         sha256_hashes: output_hashes,
     };
