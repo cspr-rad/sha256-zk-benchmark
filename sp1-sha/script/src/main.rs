@@ -1,7 +1,7 @@
 //! A simple script to generate and verify the proof of a given program.
-use sp1_sdk::{SP1Prover, SP1Stdin, SP1Verifier};
-use serde::{Serialize, Deserialize};
 use bincode;
+use serde::{Deserialize, Serialize};
+use sp1_sdk::{SP1Prover, SP1Stdin, SP1Verifier};
 const ELF: &[u8] = include_bytes!("../../program/elf/riscv32im-succinct-zkvm-elf");
 use sp1_types::Output;
 
@@ -13,10 +13,13 @@ fn main() {
     let mut proof = SP1Prover::prove(ELF, stdin).expect("proving failed");
 
     // Read output.
-    let journal = proof.public_values.read::<Output>();
-    println!("Public journal: {:?}", &journal);
+    // let journal = proof.public_values.read::<Output>();
+    // println!("Public journal: {:?}", &journal);
 
-    println!("Proof size: {:?}", &bincode::serialize(&proof).unwrap().len());
+    println!(
+        "Proof size: {:?}",
+        &bincode::serialize(&proof).unwrap().len()
+    );
 
     // Verify proof.
     SP1Verifier::verify(ELF, &proof).expect("verification failed");

@@ -10,3 +10,6 @@ risc0-groth16 = { version = "0.21.0" }
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 serde = "1.0"
 bincode = "1.3.3"
+
+[features]
+groth16 = []
