@@ -1,4 +1,3 @@
-[workspace]
 [package]
 version = "0.1.0"
 name = "sp1-sha-script"
@@ -6,6 +5,9 @@ edition = "2021"
 
 [dependencies]
 sp1-sdk = { git = "https://github.com/succinctlabs/sp1.git" }
+sp1-types = { path="../sp1-types" }
+bincode = "1.3"
+serde = "1"
 
 [build-dependencies]
 sp1-helper = { git = "https://github.com/succinctlabs/sp1.git" }

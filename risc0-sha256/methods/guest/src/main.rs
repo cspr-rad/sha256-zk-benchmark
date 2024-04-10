@@ -18,7 +18,7 @@ fn main() {
     let mut output_hashes: Vec<Digest> = Vec::new();
     // test sha256
     for i in 0..1000 {
-        let sha_input = [1u8; 0];
+        let sha_input = [1u8; 32];
         let sha_hash: Digest = *Impl::hash_bytes(&sha_input);
         output_hashes.push(sha_hash);
     }
