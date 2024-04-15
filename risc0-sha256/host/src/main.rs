@@ -9,20 +9,30 @@ use risc0_zkvm::{
 };
 use serde::Serialize;
 
+use chrono::{DateTime, TimeZone, Utc};
+
 fn main() {
-    #[cfg(feature="groth16")]
-    snark2stark();
-    #[cfg(not(feature="groth16"))]
-    default();
+    let test_vectors: Vec<u32> = vec![10, 100, 1000];
+    for rounds in test_vectors{
+        let start_time: i64 = Utc::now().timestamp();
+        #[cfg(feature="groth16")]
+        snark2stark(rounds);
+        #[cfg(not(feature="groth16"))]
+        default(rounds);
+        let runtime = Utc::now().timestamp() - start_time;
+        println!("[Risc0 SHA256 Benchmark] Total runtime: {:?}, rounds of sha256: {:?}", runtime, rounds);
+    }
 }
 
-fn default(){
+fn default(rounds: u32){
     // Initialize tracing. In order to view logs, run `RUST_LOG=info cargo run`
     tracing_subscriber::fmt()
         .with_env_filter(tracing_subscriber::filter::EnvFilter::from_default_env())
         .init();
     // use default prover to generate proof
     let env = ExecutorEnv::builder()
+    .write(&rounds)
+    .unwrap()
     .build()
     .unwrap();
 
@@ -33,13 +43,17 @@ fn default(){
 }
 
 #[cfg(feature = "groth16")]
-fn snark2stark() {
+fn snark2stark(rounds: u32) {
     // Initialize tracing. In order to view logs, run `RUST_LOG=info cargo run`
     tracing_subscriber::fmt()
         .with_env_filter(tracing_subscriber::filter::EnvFilter::from_default_env())
         .init();
 
-    let env = ExecutorEnv::builder().build().unwrap();
+    let env = ExecutorEnv::builder()
+        .write(&rounds)
+        .unwrap()
+        .build()
+        .unwrap();
     let mut exec = ExecutorImpl::from_elf(env, RISC0SHA_ELF).unwrap();
     let session = exec.run().unwrap();
     let opts = ProverOpts::default();

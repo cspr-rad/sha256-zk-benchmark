@@ -15,13 +15,7 @@ fn benchmark(rounds: u32){
         "Proof size: {:?}",
         &bincode::serialize(&proof).unwrap().len()
     );
-
     SP1Verifier::verify(ELF, &proof).expect("verification failed");
-
-    /*proof
-        .save("proof-with-io.json")
-        .expect("saving proof failed");
-    */
 }
 
 
@@ -31,6 +25,6 @@ fn main() {
         let start_time: i64 = Utc::now().timestamp();
         benchmark(rounds);
         let runtime = Utc::now().timestamp() - start_time;
-        println!("[SP1 Benchmark] Total runtime: {:?}, rounds of sha256: {:?}", runtime, rounds);
+        println!("[SP1 SHA256 Benchmark] Total runtime: {:?}, rounds of sha256: {:?}", runtime, rounds);
     }
 }
