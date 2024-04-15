@@ -74,13 +74,13 @@ See [here](https://crates.io/crates/risc0-zkvm)
 
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
 | --- | --- | --- | --- |
-| x | x | x | x |
+| 485 B | 773 B |  3653 B | x |
 
 # Risc0-Groth16 proof speed benchmark
 
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
 | --- | --- | --- | --- |
-| x | x | x | x |
+| 257s | 256s | 346s | x |
 
 
 Disclaimer: I had to run the SP1 benchmarks on my Macbook, on Ubuntu I encountered this error:
