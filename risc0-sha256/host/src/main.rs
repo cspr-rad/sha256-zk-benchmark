@@ -25,11 +25,6 @@ fn main() {
 }
 
 fn default(rounds: u32){
-    // Initialize tracing. In order to view logs, run `RUST_LOG=info cargo run`
-    tracing_subscriber::fmt()
-        .with_env_filter(tracing_subscriber::filter::EnvFilter::from_default_env())
-        .init();
-    // use default prover to generate proof
     let env = ExecutorEnv::builder()
     .write(&rounds)
     .unwrap()
@@ -44,11 +39,6 @@ fn default(rounds: u32){
 
 #[cfg(feature = "groth16")]
 fn snark2stark(rounds: u32) {
-    // Initialize tracing. In order to view logs, run `RUST_LOG=info cargo run`
-    tracing_subscriber::fmt()
-        .with_env_filter(tracing_subscriber::filter::EnvFilter::from_default_env())
-        .init();
-
     let env = ExecutorEnv::builder()
         .write(&rounds)
         .unwrap()
