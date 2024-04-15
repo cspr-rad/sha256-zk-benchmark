@@ -51,24 +51,24 @@ See [here](https://crates.io/crates/risc0-zkvm)
 
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
 | --- | --- | --- | --- |
-| x | x | x | x |
+| 1.44 MB | 1.52 MB | 2.81 MB | x |
 
 # SP1 proof speed benchmark
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
 | --- | --- | --- | --- |
-| x | x | x | x |
+| 74s | 214s | 2010s | x |
 
 # Risc0 proof size benchmark
 
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
 | --- | --- | --- | --- |
-| x | x | x | x |
+| 215.6 KB | 216.2 KB | 256.7 KB | x |
 
 # Risc0 proof speed benchmark
 
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
 | --- | --- | --- | --- |
-| x | x | x | x |
+| 26s | 27s | 113s | x |
 
 # Risc0-Groth16 proof size benchmark
 
@@ -82,3 +82,11 @@ See [here](https://crates.io/crates/risc0-zkvm)
 | --- | --- | --- | --- |
 | x | x | x | x |
 
+
+Disclaimer: I had to run the SP1 benchmarks on my Macbook, on Ubuntu I encountered this error:
+
+Machine used for SP1: `M2 Macbook Air, 8GB Ram`.
+
+The reason why a different machine was used for the SP1 benchmarks is [this issue](https://github.com/jdx/mise/issues/1630) related to `curve25519-dalek v4.1.2`.
+
+The machine used for Risc0 and Risc0-groth16 was a 32GB Ram, 8-core x86-64 Ubuntu server.
