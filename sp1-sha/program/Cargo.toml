@@ -7,6 +7,5 @@ edition = "2021"
 [dependencies]
 sp1-zkvm = { git = "https://github.com/succinctlabs/sp1.git" }
 sha2-v0-10-8 = { git = "https://github.com/sp1-patches/RustCrypto-hashes", package = "sha2", branch = "patch-v0.10.8" }
-sp1-types = {path="../sp1-types"}
-serde = "1"
+serde = {version="1", features=["derive"]}
 bincode = "1.3"
