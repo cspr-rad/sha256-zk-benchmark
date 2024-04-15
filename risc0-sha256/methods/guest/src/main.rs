@@ -9,19 +9,18 @@ risc0_zkvm::guest::entry!(main);
 use serde::{Serialize, Deserialize};
 #[derive(Serialize, Deserialize)]
 struct Output {
-    sha256_hashes: Vec<Vec<u8>>,
+    sha256_hashes: Vec<Digest>,
 }
 
 fn main() {
     // read the input
     let rounds: u32 = env::read();
-    let mut output_hashes: Vec<Vec<u8>> = Vec::new();
+    let mut output_hashes: Vec<Digest> = Vec::new();
     // test sha256
     for i in 0..rounds {
         let sha_input = [1u8; 32];
-        let hasher = Sha256::new();
-        hasher.update(&sha_input);
-        output_hashes.push(hasher.to_vec());
+        let sha_hash: Digest = *Impl::hash_bytes(&sha_input);
+        output_hashes.push(sha_hash);
     }
     let output: Output = Output {
         sha256_hashes: output_hashes,
