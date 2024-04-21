@@ -56,7 +56,7 @@ See [here](https://crates.io/crates/risc0-zkvm)
 # SP1 proof speed benchmark
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
 | --- | --- | --- | --- |
-| 74s | 214s | 2010s | x |
+| 1s | 4s | 27s | x |
 
 # Risc0 proof size benchmark
 
@@ -68,7 +68,7 @@ See [here](https://crates.io/crates/risc0-zkvm)
 
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
 | --- | --- | --- | --- |
-| 26s | 27s | 113s | x |
+| 19s | 19s | 78s | x |
 
 # Risc0-Groth16 proof size benchmark
 
@@ -80,7 +80,7 @@ See [here](https://crates.io/crates/risc0-zkvm)
 
 | 1 hash | 10 hashs | 100 hashs | 1000 hashs |
 | --- | --- | --- | --- |
-| 257s | 256s | 346s | x |
+| 223s | 223s | 286s | x |
 
 
 Disclaimer: I had to run the SP1 benchmarks on my Macbook, on Ubuntu I encountered this error:
